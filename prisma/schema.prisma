@@ -11,13 +11,3 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
-
-model Url {
-  id          BigInt   @id @default(autoincrement())
-  longUrl     String   @db.Text
-  shortCode   String   @unique
-  createdAt   DateTime @default(now())
-  
-  // Indexing shortCode is vital for lookup speed
-  @@index([shortCode])
-}
